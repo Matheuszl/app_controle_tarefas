@@ -18,15 +18,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//rota responsavel pela verificação do email
+//no momento da criação de uma nova conta, ela dispara um mail de confirmação
+Auth::routes(['verify' => true]); 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('tarefa', App\Http\Controllers\TarefaController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']) //rota principal 
+    ->name('home')
+    ->middleware('verified'); //adicionamos um middleware para as rotas
 
-Route::get('/mensagem-teste', function() {
+Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
+    ->middleware('verified');
+
+Route::get('/mensagem-teste', function() { //rota de envio de email promocional
     // return new MensagemTesteMail();
     Mail::to('matheus.zzalamena@gmail.com')->send(new MensagemTesteMail());
-
     return 'Email enviado ao destinatario com sucesso';
 });

@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     // SOBRESCREVEMOS A FUNCAO NATIVA NO LARAVEL
     public function sendPasswordResetNotification($token){
-        $this->notify(new RedefinirSenhaNotification($token, $this->email));
+        $this->notify(new RedefinirSenhaNotification($token, $this->email, $this->name));
     }
 }

@@ -29,7 +29,7 @@ class TarefaController extends Controller
     {
         $user_id = auth()->user()->id;
         //recupera todas as tarefaz quem o user id seja o mesmo do user logado
-        $tarefas = Tarefa::where('user_id', $user_id)->get();
+        $tarefas = Tarefa::where('user_id', $user_id)->paginate(10);
         return view('tarefa.index', ['tarefas' => $tarefas]);
     }
 

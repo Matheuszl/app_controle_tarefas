@@ -27,10 +27,10 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $name = Auth::user()->name;
-        $email = Auth::user()->email;
-        echo "Ola: ".$id.": ".$name.", email: ".$email;
+        $user_id = auth()->user()->id;
+        //recupera todas as tarefaz quem o user id seja o mesmo do user logado
+        $tarefas = Tarefa::where('user_id', $user_id)->get();
+        return view('tarefa.index', ['tarefas' => $tarefas]);
     }
 
     /**

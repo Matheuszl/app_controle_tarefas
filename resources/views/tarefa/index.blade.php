@@ -25,6 +25,7 @@
                                         <th scope="row">{{ $t['id'] }}</th>
                                         <td>{{ $t['tarefa'] }}</td>
                                         <td>{{ date('d/m/Y', strtotime($t['data_conclusao'])) }}</td>
+                                        <td><a href="{{ route('tarefa.edit', $t['id']) }}">Editar</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -23,9 +23,9 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]); 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']) //rota principal 
-    ->name('home')
-    ->middleware('verified'); //adicionamos um middleware para as rotas
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']) //rota principal 
+//     ->name('home')
+//     ->middleware('verified'); //adicionamos um middleware para as rotas
 
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');

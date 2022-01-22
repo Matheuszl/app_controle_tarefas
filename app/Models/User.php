@@ -44,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
-    // SOBRESCREVEMOS A FUNCAO NATIVA NO LARAVEL
+    //FUNCAO NATIVA NO LARAVEL
     public function sendPasswordResetNotification($token){
         $this->notify(new RedefinirSenhaNotification($token, $this->email, $this->name));
     }

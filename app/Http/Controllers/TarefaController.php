@@ -6,6 +6,9 @@ use App\Models\Tarefa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Mail;
+use App\Mail\NovaTarefaMail;
+
 class TarefaController extends Controller
 {
 
@@ -48,7 +51,15 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $tarefa = Tarefa::create($request->all());
+        $dados = $request->all('tarefa', 'data_conclusao');
+
+        $destinatario = auth()->user()->email; //user extrai os dados do usuario logado
+
+        $dados['user_id'] = auth()->user()->id;
+
+        $tarefa = Tarefa::create($dados);
+
+        Mail::to($destinatario)->send(new NovaTarefaMail($tarefa)); //precisamos passar alguns detalhes da tarefa
 
         return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
     }
@@ -98,3 +109,12 @@ class TarefaController extends Controller
         //
     }
 }
+
+/**
+ *
+ * até B=0
+*faça (se C>0
+ *  então (B:=B-1; C:= C-1)
+  * senão (A:= B; ✓))
+*A:= 0
+ */

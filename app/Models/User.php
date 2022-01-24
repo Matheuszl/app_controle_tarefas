@@ -53,5 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new VerificarEmailNotification($this->name));
     }
 
-    //trabalhar na exibsao dos dados da tarefa!
+    
+    /**
+     * Get all of the tarefas for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tarefas()
+    {
+        //HasMany tem muitos
+        return $this->hasMany('App\Models\Tarefa');
+    }
 }

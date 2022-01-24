@@ -10,4 +10,14 @@ class Tarefa extends Model
     use HasFactory;
 
     protected $fillable = ['tarefa', 'data_conclusao', 'user_id'];
+
+    /**
+     * Get the user that owns the Tarefa
+     * PERTENCE A
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

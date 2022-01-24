@@ -17,6 +17,8 @@ class TarefasExport implements FromCollection
     */
     public function collection()
     {
-        return Tarefa::all(); //TRAS TODOS OS REGISTROS DE TAREFA MAPEADO POR ELE MESMO
+        //return Tarefa::all(); TRAS TODOS OS REGISTROS DE TAREFA MAPEADO POR ELE MESMO
+        // dd(auth()->user()->tarefas()->get());
+        return auth()->user()->tarefas()->get(); //exposta apenas as tarefas relacionadas ao usuario logado
     }
 }

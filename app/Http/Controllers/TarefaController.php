@@ -6,6 +6,9 @@ use App\Models\Tarefa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Exports\TarefasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Mail;
 use App\Mail\NovaTarefaMail;
 
@@ -125,6 +128,11 @@ class TarefaController extends Controller
         }
 
         return view('acesso-negado');
+    }
+
+    public function exportacao() {
+        // return 'Modulo LARAVEL EXCEL';
+        return Excel::download(new TarefasExport, 'lista_de_tarefas.xlsx');
     }
 }
 

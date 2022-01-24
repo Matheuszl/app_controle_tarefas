@@ -27,6 +27,10 @@ Auth::routes(['verify' => true]);
 //     ->name('home')
 //     ->middleware('verified'); //adicionamos um middleware para as rotas
 
+//rota xlsx
+Route::get('tarefa/exportacao', 'App\Http\Controllers\TarefaController@exportacao')
+    ->name('tarefa.exportacao');
+
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 

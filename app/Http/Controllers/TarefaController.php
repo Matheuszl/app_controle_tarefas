@@ -146,6 +146,11 @@ class TarefaController extends Controller
         return Excel::download(new TarefasExport, $nome_arquivo);
     }
 
+    public function exportar()
+    {
+        return 'PDF EXPORT';
+    }
+
 }
 
 /**

@@ -31,11 +31,15 @@ Auth::routes(['verify' => true]);
 Route::get('tarefa/exportacao/{extensao}', 'App\Http\Controllers\TarefaController@exportacao')
     ->name('tarefa.exportacao');
 
+Route::get('tarefa/exportar', 'App\Http\Controllers\TarefaController@exportar')
+    ->name('tarefa.exportar');
+
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 
-Route::get('/mensagem-teste', function() { //rota de envio de email promocional
-    // return new MensagemTesteMail();
-    Mail::to('matheus.zzalamena@gmail.com')->send(new MensagemTesteMail());
-    return 'Email enviado ao destinatario com sucesso';
-});
+
+// Route::get('/mensagem-teste', function() { //rota de envio de email promocional
+//     // return new MensagemTesteMail();
+//     Mail::to('@gmail.com')->send(new MensagemTesteMail());
+//     return 'Email enviado ao destinatario com sucesso';
+// });

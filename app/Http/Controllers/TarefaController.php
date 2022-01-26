@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Exports\TarefasExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 use Mail;
 use App\Mail\NovaTarefaMail;
@@ -88,7 +89,7 @@ class TarefaController extends Controller
     {
         //verificar se user e dona da tarefa
         $user_id = auth()->user()->id;
-        if($user_id == $tarefa->user_id) {
+        if ($user_id == $tarefa->user_id) {
             return view('tarefa.edit', ['tarefa' => $tarefa]);
         }
         return view('acesso-negado');
@@ -106,7 +107,7 @@ class TarefaController extends Controller
         $tarefa->update($request->all());
 
         $user_id = auth()->user()->id;
-        if($user_id == $tarefa->user_id) {
+        if ($user_id == $tarefa->user_id) {
             return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
         }
         return view('acesso-negado');
@@ -121,7 +122,7 @@ class TarefaController extends Controller
     public function destroy(Tarefa $tarefa)
     {
         $user_id = auth()->user()->id;
-        if($user_id == $tarefa->user_id) {
+        if ($user_id == $tarefa->user_id) {
             $tarefa->delete();
 
             return redirect()->route('tarefa.index');
@@ -130,15 +131,16 @@ class TarefaController extends Controller
         return view('acesso-negado');
     }
 
-    public function exportacao($extensao) {
+    public function exportacao($extensao)
+    {
         // return 'Modulo LARAVEL EXCEL';
         $nome_arquivo = 'lista_tarefas';
 
         //a url fica exposta na rotal entao verificamos se for xslx ou csv
-        //se nao for nenhum das duas ele manda pro index novamente 
-        if($extensao == 'xlsx'){
+        //se nao for nenhum das duas ele manda pro index novamente
+        if ($extensao == 'xlsx') {
             $nome_arquivo .= '.'.$extensao;
-        } else if ($extensao == 'csv') {
+        } elseif ($extensao == 'csv') {
             $nome_arquivo .= '.'.$extensao;
         } else {
             return redirect()->route('tarefa.index');
@@ -148,9 +150,12 @@ class TarefaController extends Controller
 
     public function exportar()
     {
-        return 'PDF EXPORT';
+        //recuperamos todas tarefas do usuario
+        $tarefas = auth()->user()->tarefas()->get();
+        //uma var que recebe o retorno da classe pdf
+        $pdf = PDF::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
+        return $pdf->download('lista_de_tarefas.pdf');
     }
-
 }
 
 /**

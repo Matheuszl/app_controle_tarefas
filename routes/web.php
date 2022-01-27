@@ -38,6 +38,14 @@ Route::get('tarefa/exportar', 'App\Http\Controllers\TarefaController@exportar')
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 
+Route::resource('user', App\Http\Controllers\UserController::class)
+    ->middleware('verified');
+
+//Rota de callback/contingencial evita que o usuario acesse uma pagina com erro 404 ba tela
+Route::fallback(function() {
+    return 'Ola visitante, a pagina que esta tentntando acessarl não existe! Se quiser, entre na nossa <a href="/">Pagina Inicial:</a>';
+});
+
 
 // Route::get('/mensagem-teste', function() { //rota de envio de email promocional
 //     // return new MensagemTesteMail();

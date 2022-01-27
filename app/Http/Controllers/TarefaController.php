@@ -104,10 +104,9 @@ class TarefaController extends Controller
      */
     public function update(Request $request, Tarefa $tarefa)
     {
-        $tarefa->update($request->all());
-
         $user_id = auth()->user()->id;
         if ($user_id == $tarefa->user_id) {
+            $tarefa->update($request->all());
             return redirect()->route('tarefa.show', ['tarefa' => $tarefa->id]);
         }
         return view('acesso-negado');
@@ -154,7 +153,12 @@ class TarefaController extends Controller
         $tarefas = auth()->user()->tarefas()->get();
         //uma var que recebe o retorno da classe pdf
         $pdf = PDF::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
-        return $pdf->download('lista_de_tarefas.pdf');
+
+        //definindo o tipo do pepal/ e a orientação retrato ou paisagem
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('lista_de_tarefas.pdf');
+        // return $pdf->download('lista_de_tarefas.pdf');
     }
 }
 

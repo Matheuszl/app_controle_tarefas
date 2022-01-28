@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+// use App\Http\Middleware\LogAcessoMiddleware;
 
 class LoginController extends Controller
 {
@@ -35,6 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // $this->middleware(LogAcessoMiddleware::class); add um mid no construtor de um controlador
         $this->middleware('guest')->except('logout');
     }
 }

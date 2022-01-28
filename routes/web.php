@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\MensagemTesteMail;
+use App\Http\Middleware\LogAcessoMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,23 +25,25 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]); 
 
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']) //rota principal 
-//     ->name('home')
-//     ->middleware('verified'); //adicionamos um middleware para as rotas
+
+
 
 //rota xlsx/csv
 Route::get('tarefa/exportacao/{extensao}', 'App\Http\Controllers\TarefaController@exportacao')
     ->name('tarefa.exportacao');
 
-    //rota podf
+//rota podf
 Route::get('tarefa/exportar', 'App\Http\Controllers\TarefaController@exportar')
     ->name('tarefa.exportar');
 
+//rotas das tarefas
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 
+//rota do usuario
 Route::resource('user', App\Http\Controllers\UserController::class)
     ->middleware('verified');
+    // ->middleware(LogAcessoMiddleware::class);
 
 //Rota de callback/contingencial evita que o usuario acesse uma pagina com erro 404 ba tela
 Route::fallback(function() {

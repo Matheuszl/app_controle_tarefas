@@ -9,7 +9,7 @@ class Tarefa extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tarefa', 'data_conclusao', 'user_id'];
+    protected $fillable = ['tarefa', 'data_conclusao', 'user_id', 'descricao', 'status', 'relevancia', 'valor'];
 
     /**
      * Get the user that owns the Tarefa

@@ -55,7 +55,7 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        $dados = $request->all('tarefa', 'data_conclusao');
+        $dados = $request->all();
 
         $destinatario = auth()->user()->email; //user extrai os dados do usuario logado
 
@@ -161,12 +161,3 @@ class TarefaController extends Controller
         // return $pdf->download('lista_de_tarefas.pdf');
     }
 }
-
-/**
- *
- * até B=0
-*faça (se C>0
- *  então (B:=B-1; C:= C-1)
-  * senão (A:= B; ✓))
-*A:= 0
- */

@@ -7,17 +7,24 @@
                 <div class="card">
                     <div class="card-header">Perfil do Usuario</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update', ['user' => $user->id]) }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('user.update', ['user' => $user->id]) }}">
                             @csrf
                             @method('PUT')
+                            <div class="card" style="width: 18rem;">
+                                <img src="img/userfoto/{{ $user->image }}" class="card-img-top">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Foto Perfil</label>
+                                <input class="form-control" type="file" name="image">
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Nome de Usuario</label>
-                    
-                                <input type="text" class="form-control" name="name" value="{{$user->name}}" >
+
+                                <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{$user->email}}">
+                                <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>
                         </form>

@@ -27,6 +27,10 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Tarefa</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Relevancia</th>
+                                    <th scope="col">Valor</th>
                                     <th scope="col">Data da conclusão</th>
                                 </tr>
                             </thead>
@@ -35,6 +39,10 @@
                                     <tr>
                                         <th scope="row">{{ $t['id'] }}</th>
                                         <td>{{ $t['tarefa'] }}</td>
+                                        <td>{{ $t['descricao'] }}</td>
+                                        <td>{{ $t['status'] }}</td>
+                                        <td>{{ $t['relevancia'] }}</td>
+                                        <td>{{ $t['valor'] }}</td>
                                         <td>{{ date('d/m/Y', strtotime($t['data_conclusao'])) }}</td>
                                         <td><a href="{{ route('tarefa.edit', $t['id']) }}">Editar</a></td>
                                         <td>
@@ -43,7 +51,7 @@
                                                 @method('DELETE')
                                                 @csrf
                                                 <a href="#"
-                                                    onclick="document.getElementById('form_{{ $t['id'] }}').submit()">Excluir</a>
+                                                    onclick="document.getElementById('form_{{ $t['id'] }}').submit()"><span><i class="bi bi-trash"></i>Excluir</span> </a>
                                             </form>
                                         </td>
                                     </tr>

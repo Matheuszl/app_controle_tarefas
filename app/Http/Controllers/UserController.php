@@ -30,10 +30,29 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
+        $dados = $request->all();
+    
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            
+            $requestImage->move(public_path('img/userfoto'), $imageName);
+        }
+        
+        $dados = $request->all();
+        $dados['image'] =  $imageName;
+
         $user_id = auth()->user()->id;
+
         if ($user_id == $user->id) {
-            $user->update($request->all());
+            $user->update($dados);
             return redirect()->route('tarefa.index');
+            // return view('usuario.index', ['user' => $user]);
         }
         return view('acesso-negado');
     }

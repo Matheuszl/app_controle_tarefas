@@ -40,6 +40,10 @@ Route::get('tarefa/exportar', 'App\Http\Controllers\TarefaController@exportar')
 Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
     ->middleware('verified');
 
+//rotas das fornecedores
+Route::resource('fornecedor', App\Http\Controllers\FornecedorController::class)
+    ->middleware('verified');
+
 //rota do usuario
 Route::resource('user', App\Http\Controllers\UserController::class)
     ->middleware('verified');

@@ -36,7 +36,8 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        //criamos uma view que sera o formulario de entrada de dados dos fornecedores
+        return view('tarefa.create');
     }
 
     /**
@@ -47,7 +48,14 @@ class FornecedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //capturamos os dados da request
+        $dados = $request->all();
+
+        //cadastramos no banco
+        $fornecedor = Fornecedor::create($dados);
+
+        return redirect()->route('fornecedor.show', ['fornecedor' => $fornecedor->id]);
+        
     }
 
     /**
@@ -58,7 +66,7 @@ class FornecedorController extends Controller
      */
     public function show(Fornecedor $fornecedor)
     {
-        //
+        return view('fornecedor.show', ['fornecedor' => $fornecedor]);
     }
 
     /**
@@ -69,7 +77,7 @@ class FornecedorController extends Controller
      */
     public function edit(Fornecedor $fornecedor)
     {
-        //
+        return view('fornecedor.edit', ['fornecedor' => $fornecedor]);
     }
 
     /**
@@ -81,7 +89,8 @@ class FornecedorController extends Controller
      */
     public function update(Request $request, Fornecedor $fornecedor)
     {
-        //
+        $fornecedor->update($request->all());
+        return redirect()->route('fornecedor.show', ['fornecedor' => $fornecedor->id]);
     }
 
     /**
@@ -92,6 +101,7 @@ class FornecedorController extends Controller
      */
     public function destroy(Fornecedor $fornecedor)
     {
-        //
+        $fornecedor->delete();
+        return redirect()->route('fornecedor.index');
     }
 }

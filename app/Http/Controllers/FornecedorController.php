@@ -37,7 +37,7 @@ class FornecedorController extends Controller
     public function create()
     {
         //criamos uma view que sera o formulario de entrada de dados dos fornecedores
-        return view('tarefa.create');
+        return view('fornecedor.create');
     }
 
     /**

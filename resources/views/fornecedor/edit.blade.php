@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('fornecedor.update', ['fornecedor' => $fornecedor->id]) }}">
                             @csrf
-                            @PUT
+                            @method('PUT')
                         
                             <div class="mb-3">
                                 <label class="form-label">Nome</label>
@@ -31,9 +31,9 @@
                                 <label class="form-label">Status</label>
                                 <select class="form-select" value="{{ $fornecedor->status}}" name="status">
                                     <option selected>Status</option>
-                                    <option value="Mapeado">Ativo</option>
-                                    <option value="Em Espera">Inativo</option>
-                                    <option value="Em desenvolvimento">Contido</option>
+                                    <option value="Ativo">Ativo</option>
+                                    <option value="Inativo">Inativo</option>
+                                    <option value="Contido">Contido</option>
                                 </select>
                             </div>
 

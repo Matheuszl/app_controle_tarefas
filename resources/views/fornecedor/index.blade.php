@@ -40,7 +40,7 @@
                                         <td>{{ $t['email'] }}</td>
                                         <td>{{ $t['status'] }}</td>
                                         <td>{{ date('d/m/Y', strtotime($t['updated_at'])) }}</td>
-                                        {{-- <td><a href="{{ route('tarefa.edit', $t['id']) }}">Editar</a></td> --}}
+                                        <td><a href="{{ route('fornecedor.edit', $t['id']) }}">Editar</a></td>
                                         <td>
                                             {{-- <form id="form_{{ $t['id'] }}" method="POST"
                                                 action="{{ route('tarefa.destroy', ['tarefa' => $t['id']]) }}">

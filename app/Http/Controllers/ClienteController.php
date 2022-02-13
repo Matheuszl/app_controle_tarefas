@@ -18,13 +18,6 @@ class ClienteController extends Controller
         $this->middleware('auth');
     }
 
-
-    public function index()
-    {
-        $clientes = Cliente::all();
-        return view('cliente.index', ['clientes' => $clientes]);
-    }
-
     public function index()
     {
         $clientes = Cliente::all();

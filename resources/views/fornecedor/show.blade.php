@@ -35,6 +35,7 @@
                             </div>
                         </fieldset>
                         <a href="{{ url()->previous() }}" class="btn btn-primary">Voltar</a>
+                        <a href="{{ route('fornecedor.index') }}" class="btn btn-primary">Lista de Fornecedores</a>
                     </div>
                 </div>
             </div>

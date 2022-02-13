@@ -4,18 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\MensagemTesteMail;
 use App\Http\Middleware\LogAcessoMiddleware;
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,9 +11,6 @@ Route::get('/', function () {
 //rota responsavel pela verificação do email
 //no momento da criação de uma nova conta, ela dispara um mail de confirmação
 Auth::routes(['verify' => true]); 
-
-
-
 
 
 //rota xlsx/csv
@@ -44,10 +29,13 @@ Route::resource('tarefa', App\Http\Controllers\TarefaController::class)
 Route::resource('fornecedor', App\Http\Controllers\FornecedorController::class)
     ->middleware('verified');
 
+//rotas das  clientes
+Route::resource('cliente', App\Http\Controllers\ClienteController::class)
+    ->middleware('verified');
+
 //rota do usuario
 Route::resource('user', App\Http\Controllers\UserController::class)
     ->middleware('verified');
-    // ->middleware(LogAcessoMiddleware::class);
 
 //Rota de callback/contingencial evita que o usuario acesse uma pagina com erro 404 ba tela
 Route::fallback(function() {

@@ -10,13 +10,7 @@
                         <form method="POST" enctype="multipart/form-data" action="{{ route('user.update', ['user' => $user->id]) }}">
                             @csrf
                             @method('PUT')
-                            <div class="card" style="width: 18rem;">
-                                <img src="img/userfoto/{{ $user->image }}" class="card-img-top">
-                            </div>
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Foto Perfil</label>
-                                <input class="form-control" type="file" name="image">
-                            </div>
+                            
                             <div class="mb-3">
                                 <label class="form-label">Nome de Usuario</label>
 

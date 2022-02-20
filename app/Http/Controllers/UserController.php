@@ -33,19 +33,17 @@ class UserController extends Controller
 
         $dados = $request->all();
     
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        // if ($request->hasFile('image') && $request->file('image')->isValid()) {
             
-            $requestImage = $request->image;
+        //     $requestImage = $request->image;
 
-            $extension = $requestImage->extension();
+        //     $extension = $requestImage->extension();
 
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+        //     $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
             
-            $requestImage->move(public_path('img/userfoto'), $imageName);
-        }
+        //     $requestImage->move(public_path('img/userfoto'), $imageName);
+        // }
         
-        $dados = $request->all();
-        $dados['image'] =  $imageName;
 
         $user_id = auth()->user()->id;
 

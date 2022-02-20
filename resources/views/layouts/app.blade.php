@@ -62,6 +62,9 @@
                             <li class="nav-item">
                                 <a href="{{ route('cliente.index') }}" class="nav-link">Clientes</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('fornecedor.index') }}" class="nav-link">Fornecedor</a>
+                            </li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -75,6 +78,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a href="{{ route('user.index') }}" class="nav-link"> Meu Perfil</a>
+                                    <a href="" class="nav-link"> Dashboard Admin</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">

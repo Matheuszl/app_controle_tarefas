@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 //rota responsavel pela verificação do email
 //no momento da criação de uma nova conta, ela dispara um mail de confirmação
-Auth::routes(['verify' => true]); 
+Auth::routes(['verify' => true]);
 
 
 //rota xlsx/csv
@@ -37,8 +37,13 @@ Route::resource('cliente', App\Http\Controllers\ClienteController::class)
 Route::resource('user', App\Http\Controllers\UserController::class)
     ->middleware('verified');
 
+
+Route::get('/dashboardadmin', function () {
+    return view('dashboard-admin.dashboard-admin'); 
+});
+
 //Rota de callback/contingencial evita que o usuario acesse uma pagina com erro 404 ba tela
-Route::fallback(function() {
+Route::fallback(function () {
     return 'Ola visitante, a pagina que esta tentntando acessarl não existe! Se quiser, entre na nossa <a href="/">Pagina Inicial:</a>';
 });
 

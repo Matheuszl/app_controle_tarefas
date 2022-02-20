@@ -12,10 +12,10 @@
                             </div>
                             <div class="col-8">
                                 <div class="float-end">
-                                    {{-- <a href="{{ route('tarefa.create') }}" type="button" class="btn btn-success mr-3">Nova Tarefa</a>
-                                    <a href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}" type="button" class="btn btn-success mr-3">XLSX</a>
-                                    <a href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}" type="button" class="btn btn-success mr-3">CSV</a>
-                                    <a href="{{ route('tarefa.exportar') }}" target="_blank" type="button" class="btn btn-success">PDF</a> --}}
+                                    <a href="{{ route('fornecedor.create') }}" type="button" class="btn btn-success mr-3">Novo Fornecedor</a>
+                                    {{-- <a href="{{ route('fornecedor.exportacao', ['extensao' => 'xlsx']) }}" type="button" class="btn btn-success mr-3">XLSX</a>
+                                    <a href="{{ route('fornecedor.exportacao', ['extensao' => 'csv']) }}" type="button" class="btn btn-success mr-3">CSV</a>
+                                    <a href="{{ route('fornecedor.exportar') }}" target="_blank" type="button" class="btn btn-success">PDF</a> --}}
 
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                         <td><a href="{{ route('fornecedor.edit', $t['id']) }}">Editar</a></td>
                                         <td>
                                             {{-- <form id="form_{{ $t['id'] }}" method="POST"
-                                                action="{{ route('tarefa.destroy', ['tarefa' => $t['id']]) }}">
+                                                action="{{ route('fornecedor.destroy', ['tarefa' => $t['id']]) }}">
                                                 @method('DELETE')
                                                 @csrf
                                                 <a href="#"

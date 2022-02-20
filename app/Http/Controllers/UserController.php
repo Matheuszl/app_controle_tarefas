@@ -25,7 +25,7 @@ class UserController extends Controller
         // $tarefas = Tarefa::where('user_id', $user_id)->paginate(10);
         // return 'Perfil de '.$id.', nome: '.$name.', email: '.$email;
         // return 'User: '.$user;
-        return view('usuario.index', ['user' => $user]);
+        return view('usuario.edit', ['user' => $user]);
     }
 
     public function update(Request $request, User $user)
@@ -49,8 +49,8 @@ class UserController extends Controller
 
         if ($user_id == $user->id) {
             $user->update($dados);
-            return redirect()->route('tarefa.index');
-            // return view('usuario.index', ['user' => $user]);
+            // return redirect()->route('usuario.view');
+            return view('usuario.edit', ['user' => $user]);
         }
         return view('acesso-negado');
     }

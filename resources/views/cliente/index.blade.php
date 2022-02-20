@@ -10,10 +10,18 @@
                             <div class="col-4">
                                 Clientes
                             </div>
+
                             <div class="col-8">
                                 <div class="float-end">
+                                    <a href="{{ route('cliente.create') }}" type="button" class="btn btn-success mr-3">Novo
+                                        Cliente</a>
+                                    {{-- <a href="{{ route('tarefa.exportacao', ['extensao' => 'xlsx']) }}" type="button" class="btn btn-success mr-3">XLSX</a>
+                                        <a href="{{ route('tarefa.exportacao', ['extensao' => 'csv']) }}" type="button" class="btn btn-success mr-3">CSV</a>
+                                        <a href="{{ route('tarefa.exportar') }}" target="_blank" type="button" class="btn btn-success">PDF</a> --}}
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="card-body">

@@ -7,19 +7,21 @@
                 <div class="card">
                     <div class="card-header">Perfil do Usuario</div>
                     <div class="card-body">
-                        {{-- <form method="POST" action="{{ route('user.update', ['user' => $user->id]) }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('user.update', ['user' => $user->id]) }}">
                             @csrf
-                            @method('PUT') --}}
+                            @method('PUT')
+                            
                             <div class="mb-3">
                                 <label class="form-label">Nome de Usuario</label>
-                                <input type="text" class="form-control" name="name" >
+
+                                <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="date" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                             </div>
                             <button type="submit" class="btn btn-primary">Atualizar</button>
-                        {{-- </form> --}}
+                        </form>
                     </div>
                 </div>
             </div>

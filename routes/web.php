@@ -38,6 +38,9 @@ Route::resource('user', App\Http\Controllers\UserController::class)
     ->middleware('verified');
 
 
+Route::get('/dashboardadmin', function () {
+    return view('dashboard-admin.dashboard-admin'); 
+});
 
 //Rota de callback/contingencial evita que o usuario acesse uma pagina com erro 404 ba tela
 Route::fallback(function () {

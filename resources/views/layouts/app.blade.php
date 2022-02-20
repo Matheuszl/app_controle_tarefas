@@ -75,6 +75,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a href="{{ route('user.index') }}" class="nav-link"> Meu Perfil</a>
+                                    <a href="" class="nav-link"> Dashboard Admin</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         class="d-none">

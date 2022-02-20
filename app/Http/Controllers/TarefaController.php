@@ -22,6 +22,7 @@ class TarefaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        // $this->middleware('gestor');
     }
 
     /**
@@ -88,6 +89,7 @@ class TarefaController extends Controller
     public function edit(Tarefa $tarefa)
     {
         //verificar se user e dona da tarefa
+
         $user_id = auth()->user()->id;
         if ($user_id == $tarefa->user_id) {
             return view('tarefa.edit', ['tarefa' => $tarefa]);

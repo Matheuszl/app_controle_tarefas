@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- chama o tamplete que ta na pasta layouts app.blade.php --}}
 @section('content')
     <div class="container-fluid">
         <div class="row">

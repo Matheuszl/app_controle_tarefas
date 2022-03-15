@@ -8,7 +8,7 @@
                     <div class="card-header">Adcionar Cliente</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('cliente.store') }}">
+                        <form method="POST" enctype="multipart/form-data" action="{{ route('cliente.store') }}">
                             @csrf
                             
                             <div class="mb-3">

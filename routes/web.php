@@ -50,9 +50,9 @@ Route::fallback(function () {
 
 //Rota -> dispara um Job -> Facede de Email
 //Dispara um email para um cliente recem cadastrado no sistema
-Route::get('/envio-email-novo-cliente/{nome}/teste/{email}', function($nome, $email) {
-    jobNovoCliente::dispatch($nome, $email);
-});
+// Route::get('/envio-email-novo-cliente/{nome}/teste/{email}', function ($nome, $email) {
+//     jobNovoCliente::dispatch($nome, $email);
+// });
 
 
 
@@ -60,12 +60,12 @@ Route::get('/envio-email-novo-cliente/{nome}/teste/{email}', function($nome, $em
 
 // Route::get('/mensagem-teste', function() { //rota de envio de email promocional
 //     // return new MensagemTesteMail();
-//     for ($i=0; $i < 15; $i++) { 
+//     for ($i=0; $i < 15; $i++) {
 //         Mail::to('matheus.zzalamena@gmail.com')->send(new MensagemTesteMail());
 //     }
 //     return 'Email enviado ao destinatario com sucesso';
 // });
 
 // Route::get('/dashboardadmin', function () {
-//     return view('dashboard-admin.dashboard-admin'); 
+//     return view('dashboard-admin.dashboard-admin');
 // });

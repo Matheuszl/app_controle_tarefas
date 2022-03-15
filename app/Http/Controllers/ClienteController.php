@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 //criar ClienteesExport
 use Maatwebsite\Excel\Facades\Excel;
@@ -12,7 +13,6 @@ use PDF;
 
 class ClienteController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -33,7 +33,20 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $dados = $request->all();
+        
+        //Verifico se na request vem uma imagem e salvo o caminho dela
+        if ($request->hasFile('image') && $request->image->isValid()) {
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $requestImage->move(public_path('img/userfoto'), $imageName);
+        }
+        //armazeno esse caminho da imagem no banco de dados
+        $dados['image'] = $imageName;
+
         $cliente = Cliente::create($dados);
+
+        $message = Cliente::notificarNovoCliente($cliente->nome, $cliente->email);
         return redirect()->route('cliente.show', ['cliente' => $cliente->id]);
     }
 
